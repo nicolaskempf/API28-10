@@ -1,0 +1,12 @@
+{
+  "name": "api-gestao-academica",
+  "version": "1.0.0",
+  "description": "API REST simples para organizar disciplinas e atividades acadêmicas",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
