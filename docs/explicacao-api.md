@@ -1,19 +1,40 @@
 # Explicação da API
 
-A API de Gestão de Atividades Acadêmicas foi pensada para ajudar a organizar as disciplinas e as atividades de uma turma.
+A API de Gestão de Atividades Acadêmicas foi criada para organizar disciplinas e atividades de uma turma.
 
 ## Como funciona
-A classe Disciplina guarda o nome da disciplina e o professor. A classe Atividade guarda o título, descrição, data de entrega, status e a disciplina relacionada.
 
-Uma disciplina pode ter várias atividades, por isso existe uma relação de um para muitos entre Disciplina e Atividade.
+A entidade **Disciplina** possui ID, nome e professor. A entidade **Atividade** possui ID, título, descrição, data de entrega, status e o ID da disciplina relacionada.
 
-## Métodos HTTP utilizados
-- GET: consulta disciplinas ou atividades.
-- POST: cadastra uma disciplina ou atividade.
-- PATCH: altera o status de uma atividade.
+Uma disciplina pode possuir várias atividades, e cada atividade pertence a uma disciplina.
+
+## Funcionalidades
+
+- Consultar e cadastrar disciplinas.
+- Consultar e cadastrar atividades.
+- Buscar uma atividade pelo ID.
+- Atualizar o status de uma atividade.
+- Excluir uma atividade pelo ID.
+- Verificar se a API está funcionando.
+
+## Métodos HTTP
+
+- **GET:** consulta dados.
+- **POST:** cadastra dados.
+- **PATCH:** altera o status de uma atividade.
+- **DELETE:** exclui uma atividade.
+
+## Validações
+
+A API verifica campos obrigatórios, IDs válidos, existência da disciplina relacionada, formato e validade da data de entrega e os status permitidos. Também retorna mensagens de erro para JSON inválido, dados incorretos, atividades inexistentes e rotas não encontradas.
 
 ## Respostas HTTP
-A API usa códigos HTTP para mostrar o resultado da requisição. Por exemplo, 200 quando deu certo, 201 quando um cadastro foi criado, 400 quando os dados enviados estão incorretos e 404 quando a rota ou atividade não existe.
 
-## O que já foi desenvolvido
-Esta primeira parte contém as rotas principais para consultar, cadastrar e atualizar atividades. Os dados são guardados em arrays enquanto o servidor está ligado. Uma melhoria futura seria salvar os dados em um banco de dados.
+- **200:** operação realizada com sucesso.
+- **201:** registro criado.
+- **400:** dados enviados incorretos.
+- **404:** atividade ou rota não encontrada.
+
+## Limitação atual
+
+Os dados são armazenados em arrays na memória e são perdidos quando o servidor é reiniciado. Uma evolução futura é utilizar um banco de dados para manter os registros salvos.
