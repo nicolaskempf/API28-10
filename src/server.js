@@ -124,6 +124,27 @@ app.patch("/api/atividades/:id/status", (req, res) => {
   return res.status(200).json(atividade);
 });
 
+// Exclui uma atividade pelo ID.
+app.delete("/api/atividades/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const indice = atividades.findIndex((item) => item.id === id);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(400).json({ erro: "Informe um ID válido." });
+  }
+
+  if (indice === -1) {
+    return res.status(404).json({ erro: "Atividade não encontrada." });
+  }
+
+  const [atividadeRemovida] = atividades.splice(indice, 1);
+
+  return res.status(200).json({
+    mensagem: "Atividade excluída com sucesso.",
+    atividade: atividadeRemovida
+  });
+});
+
 app.use((req, res) => {
   res.status(404).json({ erro: "Rota não encontrada." });
 });
