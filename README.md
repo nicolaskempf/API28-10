@@ -1,26 +1,24 @@
 # API de Gestão de Atividades Acadêmicas
 
-Projeto acadêmico para praticar o desenvolvimento de uma API REST usando Node.js e Express.
+Projeto acadêmico desenvolvido para praticar a criação de uma API REST com Node.js e Express.
 
 ## Objetivo
-A API permite cadastrar disciplinas e atividades, consultar os registros e atualizar o status de uma atividade. A ideia é ajudar a organizar as atividades de uma turma.
 
-## Classes principais
-- **Disciplina**: id, nome e professor.
-- **Atividade**: id, titulo, descricao, dataEntrega, status e disciplinaId.
-
-Uma disciplina pode ter várias atividades. Cada atividade pertence a uma disciplina.
+A API permite cadastrar e consultar disciplinas e atividades acadêmicas, atualizar o status de uma atividade e excluir atividades.
 
 ## Tecnologias
+
 - Node.js
 - Express
 - JavaScript
-- Dados mantidos em memória (não usa banco de dados nesta versão inicial).
+- Dados armazenados em memória (sem banco de dados nesta versão).
 
 ## Como executar
+
 1. Instale o [Node.js](https://nodejs.org/).
-2. Baixe ou clone este repositório.
-3. No terminal, dentro da pasta do projeto, execute:
+2. Clone ou baixe este repositório.
+3. Abra o terminal na pasta do projeto.
+4. Execute:
 
 ```bash
 npm install
@@ -29,11 +27,11 @@ npm start
 
 A API ficará disponível em `http://localhost:3000`.
 
-## Rotas implementadas
+## Rotas disponíveis
 
-| Método | Rota | O que faz |
+| Método | Rota | Descrição |
 |---|---|---|
-| GET | `/` | Mostra uma mensagem inicial |
+| GET | `/` | Exibe informações da API e suas rotas |
 | GET | `/api/health` | Verifica se a API está funcionando |
 | GET | `/api/disciplinas` | Lista as disciplinas |
 | POST | `/api/disciplinas` | Cadastra uma disciplina |
@@ -41,10 +39,15 @@ A API ficará disponível em `http://localhost:3000`.
 | GET | `/api/atividades/:id` | Busca uma atividade pelo ID |
 | POST | `/api/atividades` | Cadastra uma atividade |
 | PATCH | `/api/atividades/:id/status` | Atualiza o status de uma atividade |
+| DELETE | `/api/atividades/:id` | Exclui uma atividade |
 
-## Exemplos de JSON
+## Exemplos de requisição
 
-Criar disciplina (`POST /api/disciplinas`):
+As requisições POST e PATCH devem enviar o cabeçalho `Content-Type: application/json`.
+
+### Cadastrar disciplina
+
+`POST /api/disciplinas`
 
 ```json
 {
@@ -53,7 +56,9 @@ Criar disciplina (`POST /api/disciplinas`):
 }
 ```
 
-Criar atividade (`POST /api/atividades`):
+### Cadastrar atividade
+
+`POST /api/atividades`
 
 ```json
 {
@@ -64,7 +69,11 @@ Criar atividade (`POST /api/atividades`):
 }
 ```
 
-Atualizar status (`PATCH /api/atividades/1/status`):
+A data deve estar no formato `AAAA-MM-DD` e corresponder a uma data real. O ID da disciplina deve existir.
+
+### Atualizar status
+
+`PATCH /api/atividades/1/status`
 
 ```json
 {
@@ -72,19 +81,25 @@ Atualizar status (`PATCH /api/atividades/1/status`):
 }
 ```
 
-Os status aceitos são `pendente`, `em andamento` e `concluida`.
+Status aceitos: `pendente`, `em andamento` e `concluida`.
 
-## Verbos e códigos HTTP
-- **GET** consulta informações.
-- **POST** cria um registro.
-- **PATCH** altera parte de um registro.
-- **200 OK** indica que a consulta ou alteração deu certo.
-- **201 Created** indica que um registro foi criado.
-- **400 Bad Request** indica dados inválidos.
-- **404 Not Found** indica que o registro não foi encontrado.
+### Excluir atividade
 
-## Limitações desta versão
-Os dados ficam em memória e são perdidos quando o servidor é reiniciado. A implementação é uma primeira parte da API, para evoluir depois com banco de dados e mais validações.
+`DELETE /api/atividades/1`
+
+A rota retorna uma mensagem de confirmação e os dados da atividade excluída.
+
+## Códigos HTTP
+
+- **200 OK:** consulta, atualização ou exclusão realizada.
+- **201 Created:** cadastro realizado.
+- **400 Bad Request:** dados inválidos ou JSON malformado.
+- **404 Not Found:** atividade ou rota não encontrada.
+
+## Observações
+
+Os registros são mantidos em arrays na memória. Por isso, os dados cadastrados são perdidos quando o servidor é reiniciado. Para uso em produção, seria necessário integrar um banco de dados e implementar outras medidas de segurança.
 
 ## Diagrama de classes
+
 O arquivo `docs/diagrama-classes.puml` contém o diagrama em PlantUML.
