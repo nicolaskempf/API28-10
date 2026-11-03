@@ -23,5 +23,11 @@ note bottom of Atividade
   pendente
   em andamento
   concluida
+
+  Operações:
+  consultar
+  cadastrar
+  atualizar status
+  excluir
 end note
 @enduml
