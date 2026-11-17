@@ -100,6 +100,6 @@ A rota retorna uma mensagem de confirmação e os dados da atividade excluída.
 
 Os registros são mantidos em arrays na memória. Por isso, os dados cadastrados são perdidos quando o servidor é reiniciado. Para uso em produção, seria necessário integrar um banco de dados e implementar outras medidas de segurança.
 
-## Diagrama de classes
+## Documentação da integração\n\nA documentação da arquitetura, do fluxo dos dados, das rotas e dos controles de qualidade está em [docs/arquitetura-integracao.md](docs/arquitetura-integracao.md).\n\n## Diagrama de classes
 
 O arquivo `docs/diagrama-classes.puml` contém o diagrama em PlantUML.
