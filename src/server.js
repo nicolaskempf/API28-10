@@ -5,6 +5,15 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+// Garante que requisições sem corpo ou com JSON que não seja objeto
+// sejam tratadas pelas validações das rotas, sem gerar erro interno.
+app.use((req, res, next) => {
+  if (!req.body || typeof req.body !== "object" || Array.isArray(req.body)) {
+    req.body = {};
+  }
+  next();
+});
+
 let disciplinas = [
   { id: 1, nome: "Desenvolvimento Web", professor: "Professor da disciplina" }
 ];
