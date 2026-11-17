@@ -87,7 +87,7 @@ O servidor utiliza a porta 3000 por padrão. Para verificar o funcionamento, fa�
 2. Envie `GET http://localhost:3000/api/disciplinas` e confira a lista inicial.
 3. Envie `GET http://localhost:3000/api/atividades` e confira a lista inicial.
 4. Cadastre uma disciplina com `POST /api/disciplinas`, enviando JSON com `nome` e `professor`.
-5. Cadastre uma atividade com `POST /api/atividades`, informando `titulo`, `descricao`, `dataEntrega` no formato AAAA-MM-DD e `disciplinaId) existente.
+5. Cadastre uma atividade com `POST /api/atividades`, informando `titulo`, `descricao`, `dataEntrega` no formato AAAA-MM-DD e `disciplinaId` existente.
 6. Consulte a atividade e atualize seu status com `PATCH /api/atividades/1/status`, usando um status permitido.
 7. Faça uma requisição com dados inválidos para demonstrar a resposta de validação.
 
